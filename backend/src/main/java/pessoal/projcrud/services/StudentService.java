@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pessoal.projcrud.dto.StudentDTO;
 import pessoal.projcrud.entities.Student;
 import pessoal.projcrud.repositories.StudentRepository;
+import pessoal.projcrud.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class StudentService {
@@ -30,7 +31,7 @@ public class StudentService {
 	public StudentDTO findById(Long id) {
 
 		Optional<Student> obj = repository.findById(id);
-		Student entity = obj.get();
+		Student entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
 		
 		return new StudentDTO(entity);
 	}	
