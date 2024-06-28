@@ -3,6 +3,7 @@ package pessoal.projcrud.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -70,7 +71,24 @@ public class StudentService {
 			throw new ResourceNotFoundException("ID not found: " + id);
 		}
 	}
+
+	public void delete(Long id) {
+		
+		try {
+			repository.deleteById(id);
+		}
+		catch (EmptyResultDataAccessException e) {
+			throw new ResourceNotFoundException("ID not found: " + id);
+		}
+	}
 }
+
+
+
+
+
+
+
 
 
 
