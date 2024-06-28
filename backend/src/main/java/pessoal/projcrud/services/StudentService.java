@@ -34,6 +34,21 @@ public class StudentService {
 		Student entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
 		
 		return new StudentDTO(entity);
+	}
+
+	@Transactional
+	public StudentDTO insert(StudentDTO dto) {
+		
+		Student entity = new Student();
+		
+			entity.setName(dto.getName());
+			entity.setCpf(dto.getCpf());
+			entity.setBirthDate(dto.getBirthDate());
+			entity.setIncome(dto.getIncome());
+			
+		entity = repository.save(entity);
+		
+		return new StudentDTO(entity);
 	}	
 }
 
