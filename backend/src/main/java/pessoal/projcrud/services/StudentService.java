@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import jakarta.persistence.EntityNotFoundException;
 import pessoal.projcrud.dto.StudentDTO;
 import pessoal.projcrud.entities.Student;
 import pessoal.projcrud.repositories.StudentRepository;
@@ -49,7 +50,26 @@ public class StudentService {
 		entity = repository.save(entity);
 		
 		return new StudentDTO(entity);
-	}	
+	}
+
+	@Transactional
+	public StudentDTO update(Long id, StudentDTO dto) {
+		try {
+			Student entity = repository.getReferenceById(id);
+			
+			entity.setName(dto.getName());
+			entity.setCpf(dto.getCpf());
+			entity.setBirthDate(dto.getBirthDate());
+			entity.setIncome(dto.getIncome());
+			
+			entity = repository.save(entity);
+			
+			return new StudentDTO(entity);			
+		}
+		catch (EntityNotFoundException e) {
+			throw new ResourceNotFoundException("ID not found: " + id);
+		}
+	}
 }
 
 
