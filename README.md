@@ -114,7 +114,7 @@ FRONTEND
 
   DELETAR UM ALUNO EXISTENTE
 
-OBS: Não será possível inserir um formulário vazio, bem como todos os campos devem serem preenchidos conforme regras de validação.
+OBS: Não será possível inserir um formulário vazio, bem como todos os campos devem ser preenchidos conforme regras de validação.
 
   
 -----------------------------------------------------------
