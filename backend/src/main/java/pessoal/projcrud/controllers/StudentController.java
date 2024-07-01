@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import io.swagger.v3.oas.annotations.Operation;
 import pessoal.projcrud.dto.StudentDTO;
 import pessoal.projcrud.services.StudentService;
 
@@ -26,6 +27,7 @@ public class StudentController {
 	@Autowired
 	private StudentService service;
 
+	@Operation(summary = "Busca todos os alunos", method = "GET")
 	@GetMapping
 	public	ResponseEntity<Page<StudentDTO>> findAll(Pageable pageable) {
 		
@@ -34,6 +36,8 @@ public class StudentController {
 		return	ResponseEntity.ok().body(list);
 	}
 	
+	
+	@Operation(summary = "Busca alunos po ID", method = "GET")
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<StudentDTO> findById(@PathVariable Long id) {
 		
@@ -42,6 +46,7 @@ public class StudentController {
 		return ResponseEntity.ok().body(dto);
 	}
 	
+	@Operation(summary = "Cadastra novos alunos", method = "POST")
 	@PostMapping
 	public ResponseEntity<StudentDTO> insert(@RequestBody StudentDTO dto) {
 		
@@ -53,6 +58,7 @@ public class StudentController {
 		return ResponseEntity.created(uri).body(dto);
 	}
 	
+	@Operation(summary = "Atualiza aluno existente", method = "PUT")
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<StudentDTO> update(@PathVariable Long id, @RequestBody StudentDTO dto) {
 		
@@ -61,6 +67,7 @@ public class StudentController {
 		return ResponseEntity.ok().body(dto);
 	}
 	
+	@Operation(summary = "Deleta aluno existente", method = "DELETE")
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<StudentDTO> delete(@PathVariable Long id) {
 		
