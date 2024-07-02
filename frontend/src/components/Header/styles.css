@@ -1,0 +1,13 @@
+.proj-header {
+    background-color: var(--proj-color-bg-secondary);
+    color: var(--proj-color-font-tertiary);
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.proj-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
