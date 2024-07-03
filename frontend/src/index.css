@@ -52,6 +52,12 @@ main {
   margin: 0 auto;
 }
 
+.proj-card {
+  background-color: #fff;
+  border-radius: 10px;
+  height: 300px;
+}
+
 .proj-mb20 {
   margin-bottom: 20px;
 }
@@ -82,6 +88,9 @@ main {
   .proj-section-title {
     text-align: left;
     font-size: 24px;
+  }
+   .proj-card {
+    height: 500px;
   }
 }
 

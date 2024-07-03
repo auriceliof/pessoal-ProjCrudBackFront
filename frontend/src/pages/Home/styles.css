@@ -1,0 +1,19 @@
+.proj-home-content {
+    display: flex;
+    justify-content: center;
+}
+
+.proj-home-content h1 {
+    margin-top: 70px;
+}
+
+.proj-home-content h5 {
+    margin-top: 60px;
+    color: var(--proj-color-font-primary);
+}
+
+.proj-home-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
