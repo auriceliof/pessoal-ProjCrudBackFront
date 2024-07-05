@@ -1,0 +1,27 @@
+.proj-listing-table {
+    width: 100%;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px 10px 0 0;
+    border-spacing: 0;
+    font-size: 12px;
+    padding: 10px;
+}
+
+.proj-listing-table thead {
+    font-size: 14px;
+    color: var(--proj-color-font-secondary);
+ }
+
+.proj-listing-table tbody {
+    color: var(--proj-color-font-primary);
+}
+
+.proj-listing-table tbody tr {
+    border-top: 1px solid var(--proj-color-card-border);
+}
+
+.proj-listing-table-td {
+    text-align: center;
+    border-top: 1px solid var(--proj-color-card-border);
+}
