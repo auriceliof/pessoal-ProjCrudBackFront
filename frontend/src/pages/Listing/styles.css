@@ -1,27 +1,45 @@
+.proj-listing-btn {
+    cursor: pointer;
+    margin: 5px;
+    width: 18%;
+    font-size: 10px;
+}  
+  
 .proj-listing-table {
     width: 100%;
-    text-align: center;
-    background-color: #fff;
-    border-radius: 10px 10px 0 0;
+    background-color: var(--proj-color-bg-secondary);
     border-spacing: 0;
-    font-size: 12px;
-    padding: 10px;
+    border: 1px solid white;
+    border-radius: 15px 15px 0 0; 
+}
+
+.proj-listing-table-id {
+    text-align: end;
 }
 
 .proj-listing-table thead {
+    height: 55px;
     font-size: 14px;
-    color: var(--proj-color-font-secondary);
- }
+    color: var(--proj-color-font-tertiary);
+}
 
 .proj-listing-table tbody {
+    text-align: center;
+    font-size: 12px;
     color: var(--proj-color-font-primary);
+    background-color: var(--proj-color-card-bg);
 }
 
 .proj-listing-table tbody tr {
+    height: 50px;
     border-top: 1px solid var(--proj-color-card-border);
 }
 
-.proj-listing-table-td {
-    text-align: center;
-    border-top: 1px solid var(--proj-color-card-border);
+.proj-listing-table tbody img {
+    height: 20px;
+    cursor: pointer;
+}
+
+.proj-listing-table tr:nth-of-type(even) {
+    background-color: var(--proj-color-bg-primary);
 }

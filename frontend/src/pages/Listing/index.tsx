@@ -21,45 +21,61 @@ export default function Listing() {
                 <table className="proj-listing-table proj-mb20 proj-mt20">
                     <thead>
                         <tr>
-                            <th className="proj-listing-table-th">ID</th>
-                            <th className="proj-listing-table-th">NOME</th>
-                            <th className="proj-listing-table-th">CPF</th>
-                            <th className="proj-listing-table-th">NASCIMENTO</th>
-                            <th className="proj-listing-table-th">RENDA</th>
-                            <th className="proj-listing-table-th"></th>
-                            <th className="proj-listing-table-th"></th>
+                            <th className='proj-listing-table-id'>ID</th>
+                            <th>NOME</th>
+                            <th>CPF</th>
+                            <th>NASCIMENTO</th>
+                            <th>RENDA</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody> 
                         <tr>
-                            <td className="proj-listing-table-td">1</td>
-                            <td className="proj-listing-table-td">Auricelio Freitas</td>
-                            <td className="proj-listing-table-td">123.456.789-00</td>
-                            <td className="proj-listing-table-td">28/08/1982</td>
-                            <td className="proj-listing-table-td">R$ 10999.0</td>
-                            <td className="proj-listing-table-td"><img src={editIcon} alt='Editar'/></td>
-                            <td className="proj-listing-table-td"><img src={deleteIcon} alt='Deletar'/></td>
-                            <td className="proj-listing-table-td"></td>
-                            <td className="proj-listing-table-td"></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Miguel Stenio</td>
+                            <td className='proj-listing-table-id'>1</td>
+                            <td>Auricelio Freitas</td>
                             <td>123.456.789-00</td>
-                            <td>16/10/187</td>
-                            <td>R$ 20999.0</td>
+                            <td>28/08/1982</td>
+                            <td>R$ 10999.0</td>
                             <td><img src={editIcon} alt='Editar'/></td>
                             <td><img src={deleteIcon} alt='Deletar'/></td>
                         </tr>
                         <tr>
-                            <td>3</td>
-                            <td>Teste Sobrenome</td>
+                            <td className='proj-listing-table-id'>1</td>
+                            <td>Teste1 Sobrenome</td>
                             <td>123.456.789-00</td>
                             <td>08/06/1990</td>
                             <td>R$ 1999.0</td>
                             <td><img src={editIcon} alt='Editar'/></td>
                             <td><img src={deleteIcon} alt='Deletar'/></td>
-                        </tr>                               
+                        </tr>    
+                        <tr>
+                            <td className='proj-listing-table-id'>3</td>
+                            <td>Teste2 Sobrenome</td>
+                            <td>123.456.789-00</td>
+                            <td>08/06/1990</td>
+                            <td>R$ 12999.0</td>
+                            <td><img src={editIcon} alt='Editar'/></td>
+                            <td><img src={deleteIcon} alt='Deletar'/></td>
+                        </tr>    
+                        <tr>
+                            <td className='proj-listing-table-id'>4</td>
+                            <td>Teste3 Sobrenome</td>
+                            <td>123.456.789-00</td>
+                            <td>08/06/1990</td>
+                            <td>R$ 8999.0</td>
+                            <td><img src={editIcon} alt='Editar'/></td>
+                            <td><img src={deleteIcon} alt='Deletar'/></td>
+                        </tr>   
+                        <tr>
+                            <td className='proj-listing-table-id'>5</td>
+                            <td>Teste4 Sobrenome</td>
+                            <td>123.456.789-00</td>
+                            <td>08/06/1990</td>
+                            <td>R$ 15999.0</td>
+                            <td><img src={editIcon} alt='Editar'/></td>
+                            <td><img src={deleteIcon} alt='Deletar'/></td>
+                        </tr>                                
                     </tbody>
                 </table>
             </section>
