@@ -7,9 +7,9 @@
   
 .proj-listing-table {
     width: 100%;
-    background-color: var(--proj-color-bg-secondary);
+    background-color: var(--proj-color-table-primary);
     border-spacing: 0;
-    border: 1px solid white;
+    border: 1px solid var(--proj-color-table-border);
     border-radius: 15px 15px 0 0; 
 }
 
@@ -20,7 +20,7 @@
 .proj-listing-table thead {
     height: 55px;
     font-size: 14px;
-    color: var(--proj-color-font-tertiary);
+    color: var(--proj-color-font-quaternary);
 }
 
 .proj-listing-table tbody {
@@ -41,5 +41,5 @@
 }
 
 .proj-listing-table tr:nth-of-type(even) {
-    background-color: var(--proj-color-bg-primary);
+    background-color: var(--proj-color-table-tertiary);
 }

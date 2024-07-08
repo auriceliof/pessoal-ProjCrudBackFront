@@ -13,9 +13,17 @@
   --proj-color-btn-primary: #2571d2;
   --proj-color-btn-secondary: #f33;
 
+  --proj-color-table-primary: #c3dbc3;
+  --proj-color-table-secondary: #fff;
+  --proj-color-table-tertiary: #e8e8e8;
+  --proj-color-table-border: #fff;
+  
+
   --proj-color-font-primary: #636363;
   --proj-color-font-secondary: #3483fa;
   --proj-color-font-tertiary: #fff;
+  --proj-color-font-quaternary: #000;
+  
   --proj-color-font-placeholder: #d9d9d9;
 
   --proj-color-error: #f33;
