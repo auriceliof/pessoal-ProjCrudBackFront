@@ -2,8 +2,32 @@ import './styles.css';
 import editIcon from '../../assets/pencil.svg';
 import deleteIcon from '../../assets/trash.svg';
 import ButtonPrimary from '../../components/ButtonPrimary';
+import { useEffect, useState } from 'react';
+import * as studentService from "../../services/student-service";
+import { StudentDTO } from '../../models/students';
+import { formatDateBR } from '../../utils/format';
+
+type QueryParams = {
+    page: number;
+    name: string;
+}
 
 export default function Listing() {
+
+    const [queryParams, setQueryParams] = useState<QueryParams>({
+        page: 0,
+        name: ""
+    });
+
+    const [students, setStudents] = useState<StudentDTO[]>([])
+
+
+    useEffect(() => {
+        studentService.findPageRequest(queryParams.page, queryParams.name)
+            .then(response => {
+                setStudents(response.data.content)
+            })
+    }, [])
 
     return (
         <main>
@@ -31,51 +55,19 @@ export default function Listing() {
                         </tr>
                     </thead>
                     <tbody> 
-                        <tr>
-                            <td className='proj-listing-table-id'>1</td>
-                            <td>Auricelio Freitas</td>
-                            <td>123.456.789-00</td>
-                            <td>28/08/1982</td>
-                            <td>R$ 10999.0</td>
-                            <td><img src={editIcon} alt='Editar'/></td>
-                            <td><img src={deleteIcon} alt='Deletar'/></td>
-                        </tr>
-                        <tr>
-                            <td className='proj-listing-table-id'>2</td>
-                            <td>Teste1 Sobrenome</td>
-                            <td>123.456.789-00</td>
-                            <td>08/06/1990</td>
-                            <td>R$ 1999.0</td>
-                            <td><img src={editIcon} alt='Editar'/></td>
-                            <td><img src={deleteIcon} alt='Deletar'/></td>
-                        </tr>    
-                        <tr>
-                            <td className='proj-listing-table-id'>3</td>
-                            <td>Teste2 Sobrenome</td>
-                            <td>123.456.789-00</td>
-                            <td>08/06/1990</td>
-                            <td>R$ 12999.0</td>
-                            <td><img src={editIcon} alt='Editar'/></td>
-                            <td><img src={deleteIcon} alt='Deletar'/></td>
-                        </tr>    
-                        <tr>
-                            <td className='proj-listing-table-id'>4</td>
-                            <td>Teste3 Sobrenome</td>
-                            <td>123.456.789-00</td>
-                            <td>08/06/1990</td>
-                            <td>R$ 8999.0</td>
-                            <td><img src={editIcon} alt='Editar'/></td>
-                            <td><img src={deleteIcon} alt='Deletar'/></td>
-                        </tr>   
-                        <tr>
-                            <td className='proj-listing-table-id'>5</td>
-                            <td>Teste4 Sobrenome</td>
-                            <td>123.456.789-00</td>
-                            <td>08/06/1990</td>
-                            <td>R$ 15999.0</td>
-                            <td><img src={editIcon} alt='Editar'/></td>
-                            <td><img src={deleteIcon} alt='Deletar'/></td>
-                        </tr>                                
+                        {
+                            students.map(student => (
+                                <tr key={student.id}>
+                                    <td className='proj-listing-table-id'>{student.id}</td>
+                                    <td>{student.name}</td>
+                                    <td>{student.cpf}</td>
+                                    <td>{formatDateBR(student.birthDate)}</td>
+                                    <td>R$ {student.income}</td>
+                                    <td><img src={editIcon} alt='Editar'/></td>
+                                    <td><img src={deleteIcon} alt='Deletar'/></td>
+                                </tr>                                
+                            ))
+                        }
                     </tbody>
                 </table>
             </section>
