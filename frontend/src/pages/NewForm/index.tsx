@@ -1,12 +1,26 @@
 import './styles.css';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import ButtonSecondary from '../../components/ButtonSecondary';
 import ButtonPrimary from '../../components/ButtonPrimary';
 import FormInput from '../../components/FormInput';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as forms from '../../utils/forms';
+import * as studentService from '../../services/student-service';
 
 export default function NewForm() {
+
+    const params = useParams();
+
+    const isEditing = params.studentId !== 'create';
+
+    useEffect(() => {
+        if (isEditing) {
+            studentService.findById(Number(params.studentId))
+            .then(response => {
+                console.log(response.data);
+            })
+        }
+    }, [])
 
     const [formData, setFormData] = useState<any>({
         name: {

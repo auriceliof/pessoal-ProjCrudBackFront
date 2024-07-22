@@ -17,3 +17,7 @@ export function findPageRequest(page: number, name: string, size = 12, sort = "i
 
     return requestBackend(config)
 }
+
+export function findById(id: number) {
+    return requestBackend({ url: `/students/${id}` });
+}
