@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import * as studentService from "../../services/student-service";
 import { StudentDTO } from '../../models/students';
 import { formatDateBR } from '../../utils/format';
+import { useNavigate } from 'react-router-dom';
 
 type QueryParams = {
     page: number;
@@ -13,6 +14,8 @@ type QueryParams = {
 }
 
 export default function Listing() {
+
+    const navigate = useNavigate();
 
     const [queryParams, setQueryParams] = useState<QueryParams>({
         page: 0,
@@ -29,6 +32,10 @@ export default function Listing() {
             })
     }, [])
 
+    function handleNewProduct() {
+        navigate("/listings/create")
+    };
+
     return (
         <main>
             <section id="proj-listing-section" className="proj-container">
@@ -37,7 +44,7 @@ export default function Listing() {
                 </div>
 
                 <div className="proj-mt40 proj-mb20">
-                    <div className="proj-listing-btn">
+                    <div className="proj-listing-btn" onClick={handleNewProduct}>
                         <ButtonPrimary name='Novo' />
                     </div>
                 </div>

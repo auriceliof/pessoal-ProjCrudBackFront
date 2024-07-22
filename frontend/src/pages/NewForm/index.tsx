@@ -2,8 +2,46 @@ import './styles.css';
 import { Link } from 'react-router-dom';
 import ButtonSecondary from '../../components/ButtonSecondary';
 import ButtonPrimary from '../../components/ButtonPrimary';
+import FormInput from '../../components/FormInput';
+import { useState } from 'react';
+import * as forms from '../../utils/forms';
 
 export default function NewForm() {
+
+    const [formData, setFormData] = useState<any>({
+        name: {
+            value: "",
+            id: "name",
+            name: "name",
+            type: "text",
+            placeholder: "Nome"
+        },
+        cpf: {
+            value: "",
+            id: "cpf",
+            name: "cpf",
+            type: "text",
+            placeholder: "CPF"
+        },
+        birthDate: {
+            value: "",
+            id: "birthDate",
+            name: "birthDate",
+            type: "date",
+            placeholder: "Data de Nascimento"
+        },
+        income: {
+            value: 0,
+            id: "income",
+            name: "income",
+            type: "double",
+            placeholder: "Salário"           
+        },
+    });
+
+    function handleInputChange(event: any) {
+        setFormData(forms.update(formData, event.target.name, event.target.value));
+    }
 
     return (
         <main>
@@ -14,21 +52,37 @@ export default function NewForm() {
                         <div className="proj-form-controls-container">
                             <div>
                                 <h5>Nome</h5>
-                                <input className="proj-form-control" type="text" placeholder='Nome'/>
+                                <FormInput 
+                                    { ...formData.name }
+                                    className="proj-form-control" 
+                                    onChange={handleInputChange}
+                                />
                             </div>
                             <div>
                                 <h5>Cpf</h5>
-                                <input className="proj-form-control" type="text" placeholder='Cpf'/>
+                                <FormInput
+                                    { ...formData.cpf }
+                                    className="proj-form-control" 
+                                    onChange={handleInputChange}
+                                />
                             </div>      
                             <div>
                                 <h5>Data de Nascimento</h5>
-                                <input className="proj-form-control" type="text" placeholder='Data de Nascimento'/>
+                                <FormInput
+                                    { ...formData.birthDate }
+                                    className="proj-form-control" 
+                                    onChange={handleInputChange}
+
+                                />                                
                             </div>      
                             <div>
                                 <h5>Renda</h5>
-                                <input className="proj-form-control" type="text" placeholder='Renda'/>
-                            </div>                    
-                            
+                                <FormInput
+                                    { ...formData.income }
+                                    className="proj-form-control" 
+                                    onChange={handleInputChange}
+                                />
+                            </div>          
                         </div>
 
                         <div className="proj-form-buttons">
