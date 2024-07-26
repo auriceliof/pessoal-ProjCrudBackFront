@@ -1,5 +1,5 @@
 import './styles.css';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import ButtonSecondary from '../../components/ButtonSecondary';
 import ButtonPrimary from '../../components/ButtonPrimary';
 import FormInput from '../../components/FormInput';
@@ -10,6 +10,8 @@ import * as studentService from '../../services/student-service';
 export default function NewForm() {
 
     const params = useParams();
+
+    const navigate = useNavigate();
 
     const isEditing = params.studentId !== 'create';
 
@@ -58,11 +60,25 @@ export default function NewForm() {
         setFormData(forms.update(formData, event.target.name, event.target.value));
     }
 
+    function handleSubmit(event: any) {
+        event.preventDefault();
+
+        const requestBody = forms.toValues(formData);
+        if (isEditing) {
+            requestBody.id = params.studentId;
+        }
+
+        studentService.updateRequest(requestBody)
+        .then(() => {
+            navigate("/listings");
+        });
+    }
+
     return (
         <main>
             <section id="proj-form-section" className="proj-container">
                 <div className="proj-form-container">
-                    <form className="proj-card proj-form">
+                    <form className="proj-card proj-form" onSubmit={handleSubmit}>
                         <h2 className="proj-mb20">Dados do Aluno</h2>
                         <div className="proj-form-controls-container">
                             <div>

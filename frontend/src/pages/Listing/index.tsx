@@ -36,6 +36,10 @@ export default function Listing() {
         navigate("/listings/create")
     };
 
+    function handleUpdate(studentId: number) {
+        navigate(`/listings/${studentId}`);
+    }
+
     return (
         <main>
             <section id="proj-listing-section" className="proj-container">
@@ -70,7 +74,7 @@ export default function Listing() {
                                     <td>{student.cpf}</td>
                                     <td>{formatDateBR(student.birthDate)}</td>
                                     <td>R$ {student.income}</td>
-                                    <td><img src={editIcon} alt='Editar'/></td>
+                                    <td><img src={editIcon} alt='Editar' onClick={() => {handleUpdate(student.id)}}/></td>
                                     <td><img src={deleteIcon} alt='Deletar'/></td>
                                 </tr>                                
                             ))
