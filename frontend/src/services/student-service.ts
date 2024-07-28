@@ -33,3 +33,14 @@ export function updateRequest(obj: StudentDTO) {
 
     return requestBackend(config)
 }
+
+export function insertRequest(obj: StudentDTO) {
+    const config : AxiosRequestConfig = {
+        method: "POST",
+        baseURL: BASE_URL,
+        url: "/students",
+        data: obj
+    }
+
+    return requestBackend(config)
+}

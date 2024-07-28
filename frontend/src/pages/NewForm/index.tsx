@@ -68,10 +68,14 @@ export default function NewForm() {
             requestBody.id = params.studentId;
         }
 
-        studentService.updateRequest(requestBody)
-        .then(() => {
-            navigate("/listings");
-        });
+        const request = isEditing
+            ? studentService.updateRequest(requestBody)
+            : studentService.insertRequest(requestBody)
+
+        request
+            .then(() => {
+                navigate("/listings");
+            });
     }
 
     return (
