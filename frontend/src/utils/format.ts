@@ -3,7 +3,7 @@ export function formatDateBR(dataHora: any) {
     const data = new Date(dataHora);
     const ano = data.getFullYear();
     const mes = String(data.getMonth() + 1).padStart(2, '0');
-    const dia = String(data.getDate()).padStart(2, '0');
+    const dia = String(data.getDate() + 1).padStart(2, '0');
     
     const dataBR = `${dia}/${mes}/${ano}`
      

@@ -69,6 +69,7 @@ export default function NewForm() {
         }
 
         const request = isEditing
+
             ? studentService.updateRequest(requestBody)
             : studentService.insertRequest(requestBody)
 

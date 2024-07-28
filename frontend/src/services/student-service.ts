@@ -44,3 +44,12 @@ export function insertRequest(obj: StudentDTO) {
 
     return requestBackend(config)
 }
+
+export function deleteRequest(id: number) {
+    const config : AxiosRequestConfig = {
+        method: "DELETE",
+        url: `/students/${id}`,
+    }
+
+    return requestBackend(config)
+}

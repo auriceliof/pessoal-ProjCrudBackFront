@@ -7,6 +7,7 @@ import * as studentService from "../../services/student-service";
 import { StudentDTO } from '../../models/students';
 import { formatDateBR } from '../../utils/format';
 import { useNavigate } from 'react-router-dom';
+import DialogConfirmation from '../../components/DialogConfirmation';
 
 type QueryParams = {
     page: number;
@@ -17,13 +18,18 @@ export default function Listing() {
 
     const navigate = useNavigate();
 
+    const [dialogConfirmationData, setDialogConfirmationData] = useState({
+        visible: false,
+        id: 0,
+        message: "Tem certeza?"
+    })
+
     const [queryParams, setQueryParams] = useState<QueryParams>({
         page: 0,
         name: ""
     });
 
     const [students, setStudents] = useState<StudentDTO[]>([])
-
 
     useEffect(() => {
         studentService.findPageRequest(queryParams.page, queryParams.name)
@@ -39,6 +45,21 @@ export default function Listing() {
     function handleUpdate(studentId: number) {
         navigate(`/listings/${studentId}`);
     }
+
+    function handleDelete(studentId: number) {
+        setDialogConfirmationData({ ...dialogConfirmationData, id: studentId, visible: true});
+    }
+
+    function handleDialogConfirmationAnswer(answer: boolean, studentId: number) {
+        if (answer) {
+            studentService.deleteRequest(studentId)
+                .then(() => {
+                    setStudents([]);
+                    window.location.reload()
+                })
+        }
+        setDialogConfirmationData({ ...dialogConfirmationData, visible: false});
+    }    
 
     return (
         <main>
@@ -75,13 +96,21 @@ export default function Listing() {
                                     <td>{formatDateBR(student.birthDate)}</td>
                                     <td>R$ {student.income}</td>
                                     <td><img src={editIcon} alt='Editar' onClick={() => {handleUpdate(student.id)}}/></td>
-                                    <td><img src={deleteIcon} alt='Deletar'/></td>
+                                    <td><img src={deleteIcon} alt='Deletar' onClick={() => handleDelete(student.id)}/></td>
                                 </tr>                                
                             ))
                         }
                     </tbody>
                 </table>
             </section>
+            {
+                dialogConfirmationData.visible &&
+                <DialogConfirmation
+                    id={dialogConfirmationData.id}
+                    message={dialogConfirmationData.message}
+                    onDialogAnswer={handleDialogConfirmationAnswer}
+                />
+            }
         </main>
     )
 }
