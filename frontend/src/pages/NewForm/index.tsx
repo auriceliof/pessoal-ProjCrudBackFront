@@ -16,6 +16,10 @@ export default function NewForm() {
     const isEditing = params.studentId !== 'create';
 
     useEffect(() => {
+
+        const obj = forms.validate(formData, "name");
+        console.log(obj);
+
         if (isEditing) {
             studentService.findById(Number(params.studentId))
             .then(response => {
@@ -52,7 +56,11 @@ export default function NewForm() {
             id: "income",
             name: "income",
             type: "double",
-            placeholder: "Salário"           
+            placeholder: "Salário",
+            validation: function(value: any) {
+                return Number(value) > 0;
+            },
+            message: "Favor informar um valor positivo"           
         },
     });
 
