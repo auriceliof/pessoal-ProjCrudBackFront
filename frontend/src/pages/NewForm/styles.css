@@ -55,9 +55,24 @@
   color: var(--proj-color-font-placeholder);
 }
 
+.proj-form-control[data-invalid="true"] {
+  border: 1px solid var(--proj-color-error);
+}
+
+.proj-form-control[data-invalid="true"] ~ div {
+  display: unset;
+}
+
+.proj-form-error {
+  color: var(--proj-color-error);
+  font-size: 12px;
+  padding-left: 4px;
+  display: none;
+}
+
 .proj-form-buttons {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  margin-top: 50px;
+  margin-top: 25px;
 }

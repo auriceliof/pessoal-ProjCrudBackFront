@@ -17,9 +17,6 @@ export default function NewForm() {
 
     useEffect(() => {
 
-        const obj = forms.validate(formData, "name");
-        console.log(obj);
-
         if (isEditing) {
             studentService.findById(Number(params.studentId))
             .then(response => {
@@ -35,21 +32,34 @@ export default function NewForm() {
             id: "name",
             name: "name",
             type: "text",
-            placeholder: "Nome"
+            placeholder: "Nome",
+            validation: function(value: any) {
+                return value.length >= 3 && value.length <= 50;
+            },
+            message: "Favor informar um nome entre 3 e 50 caracteres"
         },
         cpf: {
             value: "",
             id: "cpf",
             name: "cpf",
             type: "text",
-            placeholder: "CPF"
+            placeholder: "CPF",
+            validation: function(value: any) {
+                return /^(([0-9]{3}.?[0-9]{3}.?[0-9]{3}-?[0-9]{2}))$/.test(value);
+            },
+            message: "Favor informar um CPF válido"
+
         },
         birthDate: {
             value: "",
             id: "birthDate",
             name: "birthDate",
             type: "date",
-            placeholder: "Data de Nascimento"
+            placeholder: "Data de Nascimento",
+            validation: function(value: any) {
+                return /^(([0-9]{4}.?[0-9]{2}.?[0-9]{2}))$/.test(value);
+            },
+            message: "Favor informar uma data válida"
         },
         income: {
             value: 0,
@@ -58,14 +68,16 @@ export default function NewForm() {
             type: "double",
             placeholder: "Salário",
             validation: function(value: any) {
-                return Number(value) > 0;
+                return Number(value) >= 0;
             },
             message: "Favor informar um valor positivo"           
         },
     });
 
     function handleInputChange(event: any) {
-        setFormData(forms.update(formData, event.target.name, event.target.value));
+        const dataUpdated = forms.update(formData, event.target.name, event.target.value);
+        const dataValidated = forms.validate(dataUpdated, event.target.name);
+        setFormData(dataValidated);
     }
 
     function handleSubmit(event: any) {
@@ -101,6 +113,7 @@ export default function NewForm() {
                                     className="proj-form-control" 
                                     onChange={handleInputChange}
                                 />
+                                <div className="proj-form-error">{formData.name.message}</div>
                             </div>
                             <div>
                                 <h5>Cpf</h5>
@@ -109,6 +122,7 @@ export default function NewForm() {
                                     className="proj-form-control" 
                                     onChange={handleInputChange}
                                 />
+                                <div className="proj-form-error">{formData.cpf.message}</div>
                             </div>      
                             <div>
                                 <h5>Data de Nascimento</h5>
@@ -116,8 +130,8 @@ export default function NewForm() {
                                     { ...formData.birthDate }
                                     className="proj-form-control" 
                                     onChange={handleInputChange}
-
-                                />                                
+                                />                              
+                                <div className="proj-form-error">{formData.birthDate.message}</div>  
                             </div>      
                             <div>
                                 <h5>Renda</h5>
@@ -126,6 +140,7 @@ export default function NewForm() {
                                     className="proj-form-control" 
                                     onChange={handleInputChange}
                                 />
+                                <div className="proj-form-error">{formData.income.message}</div>
                             </div>          
                         </div>
 
