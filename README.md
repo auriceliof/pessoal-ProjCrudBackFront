@@ -125,19 +125,28 @@ OBS: Não será possível inserir um formulário vazio, bem como todos os campos
 
   HOME
 
-![image](https://github.com/auriceliof/unifametro-afdpw-CRUD/assets/4201131/9af51f33-9746-4470-85d6-13b8f358beb2)
+![image](https://github.com/user-attachments/assets/2bba479c-86d7-49df-94aa-fce8c8220500)
+
 
 
 
   CATÁLOGO DE ALUNOS
 
-![image](https://github.com/auriceliof/unifametro-afdpw-CRUD/assets/4201131/51a4b706-52fd-48de-900e-c08989c79953)
+![image](https://github.com/user-attachments/assets/73501ef8-a3f1-44f9-90c1-e48116cd6b15)
 
 
 
-  CADASTRAR NOVO ALUNO
 
-![image](https://github.com/auriceliof/unifametro-afdpw-CRUD/assets/4201131/7af8c082-c428-4355-83f7-27a65fccd935)
+  CADASTRO E EDIÇÃO DE ALUNO
+
+![image](https://github.com/user-attachments/assets/6facdb97-618f-46c6-8f74-ba88367e6ff7)
+
+
+
+MODAL PARA CONFIRMAÇÃO DE EXCLUSÃO DE ALUNO
+
+![image](https://github.com/user-attachments/assets/43cdd911-14e7-446a-b4f2-4c4180511de4)
+
 
 
     
