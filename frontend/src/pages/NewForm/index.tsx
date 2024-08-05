@@ -74,12 +74,6 @@ export default function NewForm() {
         },
     });
 
-    function handleInputChange(event: any) {
-        const dataUpdated = forms.update(formData, event.target.name, event.target.value);
-        const dataValidated = forms.validate(dataUpdated, event.target.name);
-        setFormData(dataValidated);
-    }
-
     function handleSubmit(event: any) {
         event.preventDefault();
 
@@ -99,6 +93,14 @@ export default function NewForm() {
             });
     }
 
+    function handleInputChange(event: any) {
+        setFormData(forms.updateAndValidate(formData, event.target.name, event.target.value));
+    }
+
+    function handleTurnDirty(name: string) {
+        setFormData(forms.dirtyAndValidate(formData, name));
+    }
+
     return (
         <main>
             <section id="proj-form-section" className="proj-container">
@@ -111,6 +113,7 @@ export default function NewForm() {
                                 <FormInput 
                                     { ...formData.name }
                                     className="proj-form-control" 
+                                    onTurnDirty={handleTurnDirty}
                                     onChange={handleInputChange}
                                 />
                                 <div className="proj-form-error">{formData.name.message}</div>
@@ -120,6 +123,7 @@ export default function NewForm() {
                                 <FormInput
                                     { ...formData.cpf }
                                     className="proj-form-control" 
+                                    onTurnDirty={handleTurnDirty}
                                     onChange={handleInputChange}
                                 />
                                 <div className="proj-form-error">{formData.cpf.message}</div>
@@ -129,6 +133,7 @@ export default function NewForm() {
                                 <FormInput
                                     { ...formData.birthDate }
                                     className="proj-form-control" 
+                                    onTurnDirty={handleTurnDirty}
                                     onChange={handleInputChange}
                                 />                              
                                 <div className="proj-form-error">{formData.birthDate.message}</div>  
@@ -138,6 +143,7 @@ export default function NewForm() {
                                 <FormInput
                                     { ...formData.income }
                                     className="proj-form-control" 
+                                    onTurnDirty={handleTurnDirty}
                                     onChange={handleInputChange}
                                 />
                                 <div className="proj-form-error">{formData.income.message}</div>

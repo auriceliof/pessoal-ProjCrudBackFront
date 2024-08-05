@@ -55,11 +55,11 @@
   color: var(--proj-color-font-placeholder);
 }
 
-.proj-form-control[data-invalid="true"] {
+.proj-form-control[data-dirty="true"][data-invalid="true"] {
   border: 1px solid var(--proj-color-error);
 }
 
-.proj-form-control[data-invalid="true"] ~ div {
+.proj-form-control[data-dirty="true"][data-invalid="true"] ~ div {
   display: unset;
 }
 
