@@ -109,13 +109,13 @@ FRONTEND
   
 - TESTES A SEREM REALIZADOS NO SISTEMA WEB
 
-  Visualizar todos os alunos numa tabela 
+      Visualizar todos os alunos numa tabela 
+        
+      Inserir um novo aluno
     
-  Inserir um novo aluno
-
-  Editar um aluno existente
-
-  Deletar um aluno existente
+      Editar um aluno existente
+    
+      Deletar um aluno existente
 
 OBS: Não será possível submeter um formulário vazio, bem como todos os campos devem ser preenchidos conforme regras de validação.
 
@@ -139,13 +139,15 @@ OBS: Não será possível submeter um formulário vazio, bem como todos os campo
 
   CADASTRO E EDIÇÃO DE ALUNO
 
-![image](https://github.com/user-attachments/assets/6facdb97-618f-46c6-8f74-ba88367e6ff7)
+![image](https://github.com/user-attachments/assets/097c1a7c-3373-480f-a4a6-cd5f0eeb34ca)
+
 
 
 
 MODAL PARA CONFIRMAÇÃO DE EXCLUSÃO DE ALUNO
 
 ![image](https://github.com/user-attachments/assets/43cdd911-14e7-446a-b4f2-4c4180511de4)
+
 
 
 VALIDAÇÃO DE FORMULÁRIO
