@@ -62,13 +62,13 @@ export default function NewForm() {
             message: "Favor informar uma data válida"
         },
         income: {
-            value: 0,
+            value: [],
             id: "income",
             name: "income",
             type: "double",
             placeholder: "Salário",
             validation: function(value: any) {
-                return Number(value) >= 0;
+                return Number(value) > 0;
             },
             message: "Favor informar um valor positivo"           
         },
@@ -76,6 +76,12 @@ export default function NewForm() {
 
     function handleSubmit(event: any) {
         event.preventDefault();
+
+        const formDataValidated = forms.dirtyAndValidateAll(formData);
+        if (forms.hasAnyInvalid(formDataValidated)) {
+            setFormData(formDataValidated);
+            return;
+        }
 
         const requestBody = forms.toValues(formData);
         if (isEditing) {

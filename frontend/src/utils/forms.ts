@@ -70,3 +70,16 @@ export function validateAll(inputs: any) {
     return newInputs;
 }
 
+export function dirtyAndValidateAll(inputs: any) {
+    return validateAll(toDirtyAll(inputs));
+}
+
+export function hasAnyInvalid(inputs: any) {
+
+    for (var name in inputs) {
+        if (inputs[name].dirty === "true" && inputs[name].invalid === "true") {
+            return true;
+        }
+    }
+    return false;
+}
