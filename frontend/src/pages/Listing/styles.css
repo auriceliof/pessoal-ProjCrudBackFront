@@ -43,3 +43,7 @@
 .proj-listing-table tr:nth-of-type(even) {
     background-color: var(--proj-color-table-tertiary);
 }
+
+.proj-listing-pagination {
+    margin: 30px 30px;
+}

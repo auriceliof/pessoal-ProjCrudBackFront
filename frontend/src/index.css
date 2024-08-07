@@ -52,6 +52,12 @@ main {
   padding: 0 20px;
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 /*-----------------------------------------------------------------*/
 /* generic styles */
 
@@ -147,6 +153,3 @@ main {
   width: 100%;
   display: contents;
 }
-
-
-

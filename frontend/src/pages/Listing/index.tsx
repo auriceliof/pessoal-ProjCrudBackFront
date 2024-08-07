@@ -8,6 +8,7 @@ import { StudentDTO } from '../../models/students';
 import { formatDateBR } from '../../utils/format';
 import { useNavigate } from 'react-router-dom';
 import DialogConfirmation from '../../components/DialogConfirmation';
+import Pagination from '../../components/Pagination';
 
 type QueryParams = {
     page: number;
@@ -102,7 +103,13 @@ export default function Listing() {
                         }
                     </tbody>
                 </table>
+
+                <div className="proj-listing-pagination">
+                    <Pagination />
+                </div>
+
             </section>
+            
             {
                 dialogConfirmationData.visible &&
                 <DialogConfirmation
