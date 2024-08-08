@@ -4,6 +4,7 @@ import './styles.css';
 type Props = {
     pageCount: number;
     range: number;
+    
 }
 
 export default function Pagination( {pageCount, range} : Props ) {
@@ -21,6 +22,7 @@ export default function Pagination( {pageCount, range} : Props ) {
             activeLinkClassName="proj-pagination-link-active"
             disableInitialCallback
             disabledClassName="proj-pagination-inactive"
+            
         />
     );
 }

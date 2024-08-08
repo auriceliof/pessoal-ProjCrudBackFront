@@ -27,17 +27,21 @@ export default function Listing() {
 
     const [queryParams, setQueryParams] = useState<QueryParams>({
         page: 0,
-        name: ""
+        name: "",
     });
 
     const [students, setStudents] = useState<StudentDTO[]>([])
 
+    const [pageCounts, setPageCounts] = useState();
+
     useEffect(() => {
-        studentService.findPageRequest(queryParams.page, queryParams.name)
+           studentService.findPageRequest(queryParams.page, queryParams.name)
             .then(response => {
                 setStudents(response.data.content)
-            })
-    }, [])
+                setPageCounts(response.data.totalPages)
+                console.log(response.data.number)               
+            })             
+    }, []);
 
     function handleNewProduct() {
         navigate("/listings/create")
@@ -105,7 +109,11 @@ export default function Listing() {
                 </table>
 
                 <div className="proj-listing-pagination">
-                    <Pagination />
+                    <Pagination 
+                        pageCount={Number((pageCounts) ? pageCounts : 0)}
+                        range={3}
+                    
+                    />
                 </div>
 
             </section>
