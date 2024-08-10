@@ -6,9 +6,11 @@ import { useEffect, useState } from 'react';
 import * as studentService from "../../services/student-service";
 import { StudentDTO } from '../../models/students';
 import { formatDateBR } from '../../utils/format';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import DialogConfirmation from '../../components/DialogConfirmation';
 import Pagination from '../../components/Pagination';
+import qs from 'query-string';
+
 
 type QueryParams = {
     page: number;
@@ -17,16 +19,18 @@ type QueryParams = {
 
 export default function Listing() {
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+
+    const location = useLocation()
 
     const [dialogConfirmationData, setDialogConfirmationData] = useState({
         visible: false,
         id: 0,
         message: "Tem certeza?"
     })
-
-    const [queryParams, setQueryParams] = useState<QueryParams>({
-        page: 0,
+    
+    const [queryParams] = useState<QueryParams>({
+        page: getActualPage() || 0,
         name: "",
     });
 
@@ -34,14 +38,38 @@ export default function Listing() {
 
     const [pageCounts, setPageCounts] = useState();
 
+    const [actualPage, setActualPage] = useState(
+        getActualPage()
+    );
+
+    function getActualPage() {
+        const params = qs.parse(location.search)
+        const page = params.page
+
+        return page ? Number(page) : undefined
+    }
+
     useEffect(() => {
-           studentService.findPageRequest(queryParams.page, queryParams.name)
+        studentService.findPageRequest(queryParams.page, queryParams.name)
             .then(response => {
                 setStudents(response.data.content)
                 setPageCounts(response.data.totalPages)
-                console.log(response.data.number)               
+                
+                setActualPage(actualPage)   
             })             
-    }, []);
+
+            const params = qs.parse(location.search)
+
+            navigate({
+                search: qs.stringify({
+                    ...params,
+                    page: actualPage
+                })
+            })
+
+            console.log(actualPage)
+
+    }, [actualPage]);
 
     function handleNewProduct() {
         navigate("/listings/create")
@@ -112,7 +140,7 @@ export default function Listing() {
                     <Pagination 
                         pageCount={Number((pageCounts) ? pageCounts : 0)}
                         range={3}
-                    
+                       
                     />
                 </div>
 
