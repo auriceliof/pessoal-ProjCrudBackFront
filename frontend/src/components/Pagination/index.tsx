@@ -4,11 +4,10 @@ import './styles.css';
 type Props = {
     pageCount: number;
     range: number;
-    
+    onChange: (pageNumber: number) => void;
 }
 
-export default function Pagination( {pageCount, range} : Props ) {
-
+export default function Pagination({ pageCount, range, onChange }: Props) {
     return (
         <ReactPaginate 
             pageCount={pageCount}
@@ -22,7 +21,7 @@ export default function Pagination( {pageCount, range} : Props ) {
             activeLinkClassName="proj-pagination-link-active"
             disableInitialCallback
             disabledClassName="proj-pagination-inactive"
-            
+            onPageChange={(items) => onChange(items.selected)}
         />
     );
 }

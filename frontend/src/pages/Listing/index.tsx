@@ -38,38 +38,31 @@ export default function Listing() {
 
     const [pageCounts, setPageCounts] = useState();
 
-    const [actualPage, setActualPage] = useState(
-        getActualPage()
-    );
+    const [actualPage, setActualPage] = useState(getActualPage());
 
     function getActualPage() {
-        const params = qs.parse(location.search)
-        const page = params.page
-
-        return page ? Number(page) : undefined
+        const params = qs.parse(location.search);
+        const page = params.page;
+        return page ? Number(page) : 0;
     }
 
+    const handlePageChange = (pageNumber: number) => {
+        console.log('Selected page:', pageNumber); 
+        setActualPage(pageNumber); // Atualiza o estado da página atual
+        const params = qs.parse(location.search);
+        navigate({
+            search: qs.stringify({ ...params, page: pageNumber })
+        });
+    };
+      
     useEffect(() => {
-        studentService.findPageRequest(queryParams.page, queryParams.name)
+        studentService.findPageRequest(actualPage, queryParams.name)
             .then(response => {
-                setStudents(response.data.content)
-                setPageCounts(response.data.totalPages)
-                
-                setActualPage(actualPage)   
-            })             
-
-            const params = qs.parse(location.search)
-
-            navigate({
-                search: qs.stringify({
-                    ...params,
-                    page: actualPage
-                })
-            })
-
-            console.log(actualPage)
-
-    }, [actualPage]);
+                setStudents(response.data.content);
+                setPageCounts(response.data.totalPages);
+            });
+    
+    }, [actualPage, queryParams.name]);
 
     function handleNewProduct() {
         navigate("/listings/create")
@@ -140,8 +133,9 @@ export default function Listing() {
                     <Pagination 
                         pageCount={Number((pageCounts) ? pageCounts : 0)}
                         range={3}
-                       
+                        onChange={handlePageChange}
                     />
+                    
                 </div>
 
             </section>
