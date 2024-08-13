@@ -47,8 +47,7 @@ export default function Listing() {
     }
 
     const handlePageChange = (pageNumber: number) => {
-        console.log('Selected page:', pageNumber); 
-        setActualPage(pageNumber); // Atualiza o estado da página atual
+        setActualPage(pageNumber);
         const params = qs.parse(location.search);
         navigate({
             search: qs.stringify({ ...params, page: pageNumber })
