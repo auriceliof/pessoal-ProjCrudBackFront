@@ -1,15 +1,18 @@
-PROJETO CRUD RESTFUL COM FRONTEND E BACKEND (COM SWAGGER)
+PROJETO CRUD RESTFUL COM FRONTEND E BACKEND (COM SWAGGER E PAGINAÇÃO)
 
 AUTHOR: AURICELIO FREITAS
 
-DATA: 27/06/2024
+DATA: 13/08/2024
 
 -----------------------------------------------------------
+
+O projeto será implementado conforme abaixo: 
+
+
 BACKEND
 
 - DEPENDÊNCIAS 
-
-    O projeto será implementado conforme abaixo: 
+    
     
       IDE: Spring Tool Suite 4 (STS)
 
@@ -29,7 +32,7 @@ BACKEND
 
 - CASO
 
-    Uma Universidade precisa cadastrar os seus alunos, conforme segue abaixo:
+    Uma Universidade precisa cadastrar seus alunos, conforme segue:
   
       NOME
   
@@ -150,8 +153,14 @@ MODAL PARA CONFIRMAÇÃO DE EXCLUSÃO DE ALUNO
 
 
 
+
 VALIDAÇÃO DE FORMULÁRIO
 
 ![image](https://github.com/user-attachments/assets/00d8cda0-d39d-4644-baa2-16a00856891d)
 
-    
+
+
+
+PAGINAÇÃO
+
+![image](https://github.com/user-attachments/assets/94622803-0497-4cdf-b73f-1cb9c086f93b) 
